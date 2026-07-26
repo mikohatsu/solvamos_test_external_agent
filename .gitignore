@@ -1,0 +1,13 @@
+# Dependency directories
+node_modules/
+
+# Secret & Environment files
+caller.json
+gemini_API_key.txt
+.env
+*.pem
+*.key
+
+# System files
+.DS_Store
+Thumbs.db

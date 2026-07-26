@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SolVamos Autonomous AI Agent Dashboard</title>
+  <meta name="description" content="Gemini API & Solana x402 기반 자율 AI 에이전트 인터랙티브 웹 대시보드" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Marked.js for Markdown Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background-glow"></div>
+  
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <i data-lucide="bot"></i>
+        </div>
+        <div class="brand-text">
+          <h1>SolVamos <span>Agent</span></h1>
+          <p>x402 Autonomous AI Agent Workspace</p>
+        </div>
+      </div>
+      
+      <div class="status-badges">
+        <div class="badge badge-network">
+          <span class="dot pulse"></span> Solana Devnet
+        </div>
+        <div class="badge badge-model">
+          <i data-lucide="sparkles"></i> Gemini 3.5 Flash
+        </div>
+        <div class="badge badge-wallet" id="walletBadge" title="Caller Wallet">
+          <i data-lucide="wallet"></i> <span id="walletAddressText">Solana x402 Active</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Prompt Input Section -->
+    <section class="prompt-section card">
+      <div class="card-header">
+        <i data-lucide="terminal"></i>
+        <h2>자율 에이전트 지시문 입력</h2>
+      </div>
+
+      <form id="agentForm" class="prompt-form">
+        <div class="input-wrapper">
+          <textarea 
+            id="queryInput" 
+            placeholder="에이전트에게 내릴 지시사항을 입력하세요. (예: 나무위키 분석가 에이전트를 찾아서 SolVamos 프로젝트 조사해줘)" 
+            rows="3"
+            required></textarea>
+          <button type="submit" id="submitBtn" class="btn-primary">
+            <span class="btn-text">에이전트 실행</span>
+            <i data-lucide="send" class="btn-icon"></i>
+          </button>
+        </div>
+      </form>
+
+      <!-- Quick Preset Chips -->
+      <div class="preset-chips">
+        <span class="chip-label"><i data-lucide="zap"></i> 추천 예시:</span>
+        <button class="chip" data-query="나무위키 분석가 에이전트를 찾아서 'SolVamos 프로젝트'에 대해 물어보고 정리해줘.">
+          🌲 나무위키 SolVamos 조사
+        </button>
+        <button class="chip" data-query="SolVamos 에이전트 마켓플레이스의 카탈로그를 탐색하고 이용 가능한 에이전트 목록과 가격을 알려줘.">
+          🔍 전체 에이전트 목록 & 가격 조회
+        </button>
+      </div>
+    </section>
+
+    <!-- Real-time Agent Execution Stream -->
+    <section class="execution-section card" id="executionSection">
+      <div class="card-header">
+        <div class="title-with-status">
+          <i data-lucide="activity"></i>
+          <h2>실시간 에이전트 동작 로그</h2>
+          <span id="agentStatusBadge" class="status-indicator status-idle">대기 중</span>
+        </div>
+        <button id="clearLogsBtn" class="btn-secondary btn-sm" title="로그 초기화">
+          <i data-lucide="trash-2"></i> Clear
+        </button>
+      </div>
+
+      <!-- Execution Timeline Container -->
+      <div class="timeline" id="logTimeline">
+        <div class="empty-state" id="emptyState">
+          <i data-lucide="cpu"></i>
+          <p>상단에서 질문을 입력하고 <strong>[에이전트 실행]</strong> 버튼을 누르면,<br/>
+          Gemini의 자율 의사결정과 Solana x402 온체인 결제 과정이 실시간으로 표출됩니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Raw Response Presentation Section -->
+    <section class="result-section card hidden" id="resultSection">
+      <div class="card-header">
+        <div class="title-with-status">
+          <i data-lucide="code-2" class="text-success"></i>
+          <h2>유료 에이전트 1차 응답 (Raw Response)</h2>
+        </div>
+        <span class="badge badge-network" id="rawResponseBadge">API Direct Output</span>
+      </div>
+      <div class="result-body" id="resultMarkdown"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Powered by <strong>SolVamos x402 Protocol</strong> & <strong>Google Gemini API</strong></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
