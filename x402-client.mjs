@@ -5,13 +5,18 @@ import {
 } from "@solana/spl-token";
 import bs58 from "bs58";
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 // -------------------------------------------------------------
 // 1. 설정 및 외부 파일 로드
 // -------------------------------------------------------------
-const CALLER_JSON_PATH = "/Users/minsik/development/SOL_DEV/caller.json";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const CALLER_JSON_PATH =
+  process.env.CALLER_JSON_PATH || path.join(__dirname, "caller.json");
 const TESTLINK_TXT_PATH =
-  "/Users/minsik/development/SOL_DEV/testlink_prompt.txt";
+  process.env.TESTLINK_TXT_PATH || path.join(__dirname, "testlink_prompt.txt");
 
 if (!fs.existsSync(CALLER_JSON_PATH)) {
   throw new Error(`지갑 파일이 존재하지 않습니다: ${CALLER_JSON_PATH}`);

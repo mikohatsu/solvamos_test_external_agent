@@ -13,7 +13,7 @@ if (!apiKey) {
 
 const ai = new GoogleGenAI({ apiKey });
 const CATALOG_INDEX_URL =
-  "https://solvamos-catalog-2ggrwml2ba-du.a.run.app/api/v1/agents";
+  process.env.CATALOG_INDEX_URL || "http://127.0.0.1:4173/api/v1/agents";
 
 // -------------------------------------------------------------
 // 2. 에이전트 도구(Tool) 실체 구현: 카탈로그 탐색

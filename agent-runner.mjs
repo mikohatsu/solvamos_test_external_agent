@@ -16,8 +16,9 @@ if (!apiKey) {
 }
 
 const ai = new GoogleGenAI({ apiKey });
+/** Local Lab default: Catalog on :4173. Override for Cloud Run, e.g. https://…/api/v1/agents */
 const CATALOG_INDEX_URL =
-  "https://solvamos-catalog-2ggrwml2ba-du.a.run.app/api/v1/agents";
+  process.env.CATALOG_INDEX_URL || "http://127.0.0.1:4173/api/v1/agents";
 
 export async function searchCatalog() {
   const res = await fetch(CATALOG_INDEX_URL);

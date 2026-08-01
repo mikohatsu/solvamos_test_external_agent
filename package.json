@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.mjs",
+    "start": "PORT=3100 node server.mjs",
+    "start:cli": "node autonomous-agent.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
