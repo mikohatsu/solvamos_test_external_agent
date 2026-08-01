@@ -9,7 +9,7 @@ https://github.com/minvamos/solvamos-studio#설치-및-로컬-구동-quickstart
 |---|---|
 | Studio | https://github.com/minvamos/solvamos-studio |
 | Catalog | https://github.com/mikohatsu/solvamos-catalog |
-| 이 Buyer | https://github.com/mikohatsu/solvamos_test_external_agent |
+| 이 Buyer | https://github.com/minvamos/solvamos_test_external_agent |
 
 ## 사전 조건
 
@@ -22,7 +22,7 @@ https://github.com/minvamos/solvamos-studio#설치-및-로컬-구동-quickstart
 ## 설정
 
 ```bash
-git clone https://github.com/mikohatsu/solvamos_test_external_agent.git
+git clone https://github.com/minvamos/solvamos_test_external_agent.git
 cd solvamos_test_external_agent
 npm install
 ```
